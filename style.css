@@ -1,1 +1,278 @@
-/* Add your CSS here */
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set up the page font */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Header styling */
+header {
+  background: linear-gradient(135deg, #0071c5, #003d82); /* Changed to Intel's official blue colors */
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container for header content */
+header div {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Intel logo styling - make it bigger */
+header img {
+  width: 200px; /* Increased from 120px to make logo bigger */
+  height: auto;
+  margin-bottom: 30px;
+  filter: brightness(0) invert(1); /* Makes the logo white */
+}
+
+/* Main heading styling - make it smaller */
+header h1 {
+  font-size: 2.5rem; /* Reduced from 3rem to make text smaller */
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Subheading paragraph styling */
+header p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* Make header responsive for smaller screens */
+@media (max-width: 768px) {
+  header {
+    padding: 40px 15px;
+    min-height: 300px;
+  }
+  
+  header h1 {
+    font-size: 1.8rem; /* Adjusted mobile size proportionally */
+  }
+  
+  header p {
+    font-size: 1rem;
+  }
+  
+  header img {
+    width: 150px; /* Increased mobile logo size proportionally */
+  }
+}
+
+/* Timeline Cards Section */
+section {
+  padding: 60px 20px;
+  background-color: #f8f9fa;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  max-width: 1320px; /* Limit width to show 4 cards (300px + 30px gap) * 4 */
+  margin: 0 auto; /* Center the timeline container */
+  white-space: nowrap; /* Prevent cards from wrapping to next line */
+}
+
+/* Container for all timeline cards */
+section {
+  display: flex; /* Make cards line up horizontally */
+  gap: 30px; /* Space between cards */
+  padding-bottom: 20px; /* Extra space at bottom for scrollbar */
+}
+
+/* Individual timeline card styling */
+section div {
+  background: white;
+  border-radius: 10px;
+  padding: 0; /* Remove padding to allow full image coverage */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 300px; /* Fixed width so cards don't shrink */
+  max-width: 300px;
+  flex-shrink: 0; /* Prevent cards from getting smaller */
+  text-align: center;
+  transition: transform 0.3s ease; /* Smooth hover effect */
+  position: relative; /* Needed for positioning text over image */
+  overflow: hidden; /* Hide content that extends beyond card */
+  height: 400px; /* Fixed height for consistent card sizes */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: flex-start; /* Align content to top */
+}
+
+/* Card hover effect */
+section div:hover {
+  transform: translateY(-5px); /* Lift card slightly on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Year styling (h2) */
+section div h2 {
+  color: #0071c5;
+  font-size: 2.5rem; /* Increased from 2rem to make bigger */
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Title styling (h3) */
+section div h3 {
+  color: #333;
+  font-size: 1.6rem; /* Increased from 1.3rem to make bigger */
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Card images - positioned below text */
+section div img {
+  width: 80%; /* Reduced from 100% to make images smaller */
+  height: 50%; /* Adjusted height to leave room for text above */
+  object-fit: cover; /* Keep image proportions */
+  position: absolute; /* Position behind text */
+  bottom: 20px; /* Position near bottom of card */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center the image perfectly */
+  z-index: 1; /* Put image behind text */
+  border-radius: 8px; /* Add rounded corners to images */
+}
+
+/* Content container for text - positioned at top */
+section div h2,
+section div h3 {
+  position: relative; /* Position over image */
+  z-index: 3; /* Put text in front */
+  color: #0071c5; /* Intel blue color instead of white */
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); /* Light shadow for readability */
+  margin: 0;
+  padding: 15px 20px 5px 20px;
+}
+
+/* Year styling (h2) - at the very top */
+section div h2 {
+  font-size: 2.5rem; /* Increased from 2rem to make bigger */
+  font-weight: bold;
+  margin-top: 10px;
+  padding-top: 20px;
+}
+
+/* Title styling (h3) - below the year */
+section div h3 {
+  font-size: 1.6rem; /* Increased from 1.3rem to make bigger */
+  font-weight: 600;
+  padding-top: 0;
+  padding-bottom: 10px;
+}
+
+/* Paragraph overlay - appears within the card when hovered */
+section div p {
+  position: absolute; /* Position within the card */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4; /* Put paragraph on top of everything */
+  
+  /* Blue gradient background */
+  background: linear-gradient(135deg, rgba(77, 166, 255, 0.95), rgba(102, 179, 255, 0.95));
+  
+  /* Flexbox to center content */
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  
+  /* Text styling - proper wrapping */
+  color: white;
+  font-size: 1.1rem; /* Increased from 0.9rem to make bigger */
+  line-height: 1.5; /* Better line spacing */
+  text-align: left; /* Left align for better readability */
+  padding: 25px; /* More padding for breathing room */
+  word-wrap: break-word; /* Break long words if needed */
+  overflow-wrap: break-word; /* Alternative word breaking */
+  white-space: normal; /* Allow text to wrap normally */
+  
+  /* Container for text wrapping */
+  box-sizing: border-box; /* Include padding in width calculation */
+  
+  /* Hide by default */
+  opacity: 0;
+  transform: translateY(20px); /* Start slightly below */
+  transition: opacity 0.4s ease, transform 0.4s ease; /* Smooth animation */
+  
+  /* Prevent text selection while hidden */
+  pointer-events: none;
+}
+
+/* Show paragraph when hovering over card */
+section div:hover p {
+  opacity: 1; /* Make paragraph visible */
+  transform: translateY(0); /* Move to normal position */
+  pointer-events: auto; /* Allow text selection when visible */
+}
+
+/* Bottom instruction text */
+body > p {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+  background-color: #f8f9fa;
+  margin: 0;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  /* Timeline section - stack cards vertically on mobile */
+  section {
+    display: block; /* Change from flex to block for vertical stacking */
+    max-width: none; /* Remove width limit */
+    overflow-x: visible; /* Remove horizontal scroll */
+    padding: 40px 20px; /* Adjust padding for mobile */
+  }
+  
+  /* Individual cards - full width and stacked */
+  section div {
+    min-width: 100%; /* Full width on mobile */
+    max-width: 100%; /* Full width on mobile */
+    margin-bottom: 30px; /* Space between stacked cards */
+    padding: 20px;
+    height: 350px; /* Slightly smaller height for mobile */
+  }
+  
+  /* Last card - no bottom margin */
+  section div:last-child {
+    margin-bottom: 0;
+  }
+  
+  section div h2 {
+    font-size: 2rem; /* Increased mobile size proportionally */
+  }
+  
+  section div h3 {
+    font-size: 1.3rem; /* Increased mobile size proportionally */
+  }
+  
+  /* Mobile images - adjust size for stacked layout */
+  section div img {
+    width: 70%; /* Slightly smaller on mobile */
+    height: 45%; /* Adjust height for mobile */
+  }
+}
+
+/* Tablet responsive adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Show only 3 cards on tablet */
+  section {
+    max-width: 990px; /* Limit width to show 3 cards (300px + 30px gap) * 3 */
+  }
+}
