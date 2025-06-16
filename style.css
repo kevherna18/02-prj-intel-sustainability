@@ -14,7 +14,12 @@ body {
 
 /* Header styling */
 header {
-  background: linear-gradient(135deg, #0071c5, #003d82); /* Changed to Intel's official blue colors */
+  background: 
+    linear-gradient(135deg, rgba(0, 113, 197, 0.8), rgba(0, 61, 130, 0.8)), /* Semi-transparent blue gradient overlay */
+    url('img/intel-background.jpg'); /* Background image */
+  background-size: cover; /* Make image cover entire header */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Don't repeat the image */
   color: white;
   padding: 60px 20px;
   text-align: center;
@@ -32,7 +37,7 @@ header div {
 
 /* Intel logo styling - make it bigger */
 header img {
-  width: 200px; /* Increased from 120px to make logo bigger */
+  width: 250px; /* Increased from 250px to make logo bigger */
   height: auto;
   margin-bottom: 30px;
   filter: brightness(0) invert(1); /* Makes the logo white */
@@ -75,13 +80,44 @@ header p {
   }
 }
 
+/* Scroll instruction text styling */
+.scroll-instruction {
+  text-align: center;
+  padding: 20px 20px; /* Reduced padding for less space */
+  background-color: white;
+  margin: 0;
+  display: flex; /* Use flexbox to align arrows and text */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  gap: 15px; /* Space between arrows and text */
+}
+
+.scroll-instruction p {
+  color: #666;
+  font-size: 1.7rem; /* Larger text size */
+  font-style: bold;
+  margin: 0;
+}
+
+/* Arrow styling */
+.arrow-left,
+.arrow-right {
+  width: 30px; /* Set arrow size */
+  height: auto;
+}
+
+/* Flip the right arrow to point right */
+.arrow-right {
+  transform: scaleX(-1); /* Flip horizontally */
+}
+
 /* Timeline Cards Section */
 section {
-  padding: 60px 20px;
-  background-color: #f8f9fa;
+  padding: 40px 20px; /* Reduced top padding to decrease space */
+  background-color: white;
   overflow-x: auto; /* Allow horizontal scrolling */
   overflow-y: hidden; /* Hide vertical scrollbar */
-  max-width: 1320px; /* Limit width to show 4 cards (300px + 30px gap) * 4 */
+  max-width: 1300px; /* Adjusted to show 3 cards (400px + 30px gap) * 3 + padding */
   margin: 0 auto; /* Center the timeline container */
   white-space: nowrap; /* Prevent cards from wrapping to next line */
 }
@@ -95,12 +131,12 @@ section {
 
 /* Individual timeline card styling */
 section div {
-  background: white;
+  background: linear-gradient(135deg, #0071c5, #003d82); /* Changed from white to Intel blue gradient */
   border-radius: 10px;
   padding: 0; /* Remove padding to allow full image coverage */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  min-width: 300px; /* Fixed width so cards don't shrink */
-  max-width: 300px;
+  min-width: 400px; /* Increased from 300px to make cards wider */
+  max-width: 400px; /* Increased from 300px to make cards wider */
   flex-shrink: 0; /* Prevent cards from getting smaller */
   text-align: center;
   transition: transform 0.3s ease; /* Smooth hover effect */
@@ -120,7 +156,7 @@ section div:hover {
 
 /* Year styling (h2) */
 section div h2 {
-  color: #0071c5;
+  color: white; /* Changed from Intel blue to white */
   font-size: 2.5rem; /* Increased from 2rem to make bigger */
   margin-bottom: 10px;
   font-weight: bold;
@@ -128,7 +164,7 @@ section div h2 {
 
 /* Title styling (h3) */
 section div h3 {
-  color: #333;
+  color: white; /* Changed from #333 to white */
   font-size: 1.6rem; /* Increased from 1.3rem to make bigger */
   margin-bottom: 15px;
   font-weight: 600;
@@ -152,8 +188,8 @@ section div h2,
 section div h3 {
   position: relative; /* Position over image */
   z-index: 3; /* Put text in front */
-  color: #0071c5; /* Intel blue color instead of white */
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); /* Light shadow for readability */
+  color: white; /* Changed from Intel blue to white */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Changed to dark shadow for readability */
   margin: 0;
   padding: 15px 20px 5px 20px;
 }
@@ -220,24 +256,29 @@ section div:hover p {
   pointer-events: auto; /* Allow text selection when visible */
 }
 
-/* Bottom instruction text */
-body > p {
-  text-align: center;
-  padding: 20px;
-  color: #666;
-  font-style: italic;
-  background-color: #f8f9fa;
-  margin: 0;
-}
-
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
+  /* Scroll instruction mobile styling */
+  .scroll-instruction {
+    gap: 10px; /* Smaller gap on mobile */
+  }
+  
+  .scroll-instruction p {
+    font-size: 1.2rem; /* Larger mobile text */
+  }
+  
+  /* Smaller arrows on mobile */
+  .arrow-left,
+  .arrow-right {
+    width: 25px;
+  }
+  
   /* Timeline section - stack cards vertically on mobile */
   section {
     display: block; /* Change from flex to block for vertical stacking */
     max-width: none; /* Remove width limit */
     overflow-x: visible; /* Remove horizontal scroll */
-    padding: 40px 20px; /* Adjust padding for mobile */
+    padding: 30px 20px; /* Reduced mobile padding */
   }
   
   /* Individual cards - full width and stacked */
@@ -271,8 +312,8 @@ body > p {
 
 /* Tablet responsive adjustments */
 @media (min-width: 769px) and (max-width: 1024px) {
-  /* Show only 3 cards on tablet */
+  /* Show only 2 cards on tablet due to wider cards */
   section {
-    max-width: 990px; /* Limit width to show 3 cards (300px + 30px gap) * 3 */
+    max-width: 860px; /* Adjusted for 2 wider cards (400px + 30px gap) * 2 + padding */
   }
 }
